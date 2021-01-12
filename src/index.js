@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class PokeService {
+  _apiBase = "https://pokeapi.co/api/v2";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  async getResource(url) {
+    const res = await fetch(`${this._apiBase}${url}`);
+
+    if (!res.ok) {
+      throw new Error(`Could not fetch ${url}` + `, received ${res.status}`);
+    }
+    return await res.json();
+  }
+
+  async getAllPokemons() {
+    const res = await this.getResource(`/pokemon/`);
+    return res.results
+  }
+
+  getPokemon(id) {
+    return this.getResource(`/pokemon/${id}/`);
+  }
+}
+
+const poke = new PokeService()
+
+poke.getAllPokemons().then((pokemons) => {
+  pokemons.forEach((res) => {
+    console.log(res.name)
+  });
+})
+
+poke.getPokemon(6).then((pokemon) => {
+  console.log(pokemon.name)
+});
