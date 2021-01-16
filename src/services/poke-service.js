@@ -12,22 +12,37 @@ export default class PokeService {
 
   async getAllPokemons() {
     const res = await this.getResource(`/pokemon/`);
-    return res.results;
+    return res.results.map(this._transformPokemon)
   }
 
-  getPokemon(id) {
-    return this.getResource(`/pokemon/${id}/`);
+  async getPokemon(id) {
+    const pokemon = await this.getResource(`/pokemon/${id}/`);
+    return this._transformPokemon(pokemon)
+  }
+
+  _transformPokemon(pokemon) {
+    return {
+      id: pokemon.id,
+      name: pokemon.name,
+      experience: pokemon.base_experience,
+      height: pokemon.height,
+      weight: pokemon.weight,
+      types: pokemon.types,
+      abilities: pokemon.abilities
+    }
   }
 }
 
-const poke = new PokeService();
+// const poke = new PokeService();
 
-poke.getAllPokemons().then((pokemons) => {
-  pokemons.forEach((res) => {
-    console.log(res.name);
-  });
-});
+// poke.getAllPokemons().then((pokemons) => {
+//   pokemons.forEach((res) => {
+//     console.log(res.name);
+//   });
+// });
 
-poke.getPokemon(6).then((pokemon) => {
-  console.log(pokemon.name);
-});
+// poke.getPokemon(6).then((pokemon) => {
+//   console.log(pokemon.name);
+// });
+
+
