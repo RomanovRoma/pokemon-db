@@ -1,6 +1,8 @@
 .header {
   margin-top: .5rem;
   padding-left: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .header a:hover {

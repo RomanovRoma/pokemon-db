@@ -2,12 +2,14 @@
   display: flex;
   margin-top: 1rem;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   padding: 1rem;
 }
 
 .pokemon-details .pokemon-image {
-  width: 30%;
-  height: 30%;
+  width: 45%;
+  height: 45%;
   border-radius: 10px;
 }
 

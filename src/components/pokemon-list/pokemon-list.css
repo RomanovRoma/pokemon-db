@@ -1,5 +1,7 @@
 .item-list .list-group-item {
   cursor: pointer;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .item-list .list-group-item:hover {
