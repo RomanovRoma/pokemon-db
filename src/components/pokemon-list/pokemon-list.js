@@ -26,10 +26,10 @@ export default class PokemonList extends Component {
     return arr.map(({id, name}) => {
       return (
         <li className="list-group-item"
-            key={id}
+            key={name}
             onClick={() => this.props.onItemSelected(id)}>
-              {name}
-            </li>
+          {name}
+        </li>
       )
     })
   }

@@ -32,17 +32,3 @@ export default class PokeService {
     }
   }
 }
-
-// const poke = new PokeService();
-
-// poke.getAllPokemons().then((pokemons) => {
-//   pokemons.forEach((res) => {
-//     console.log(res.name);
-//   });
-// });
-
-// poke.getPokemon(6).then((pokemon) => {
-//   console.log(pokemon.name);
-// });
-
-
