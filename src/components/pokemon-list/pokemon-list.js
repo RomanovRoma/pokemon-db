@@ -1,24 +1,52 @@
 import React, { Component } from 'react'
+import PokeService from '../../services/poke-service';
+import Spinner from '../spinner/spinner';
 
 import './pokemon-list.css'
 
 export default class PokemonList extends Component {
 
+  pokeService = new PokeService()
+
+  state = {
+    pokemonList: null
+  }
+
+  componentDidMount() {
+    this.pokeService
+      .getAllPokemons()
+      .then((pokemonList) => {
+        this.setState({
+          pokemonList
+        })
+      })
+  }
+
+  renderItems(arr) {
+    return arr.map(({id, name}) => {
+      return (
+        <li className="list-group-item"
+            key={id}
+            onClick={() => this.props.onItemSelected(id)}>
+              {name}
+            </li>
+      )
+    })
+  }
+
   render() {
+
+    const { pokemonList } = this.state
+
+    if (!pokemonList) {
+      return <Spinner />
+    }
+
+    const items = this.renderItems(pokemonList)
+
     return (
       <ul className="item-list list-group">
-        <li className="list-group-item">bulbasaur</li>
-        <li className="list-group-item">ivysaur</li>
-        <li className="list-group-item">venusaur</li>
-        <li className="list-group-item">charmander</li>
-        <li className="list-group-item">charmeleon</li>
-        <li className="list-group-item">charizard</li>
-        <li className="list-group-item">squirtle</li>
-        <li className="list-group-item">wartortle</li>
-        <li className="list-group-item">blastoise</li>
-        <li className="list-group-item">caterpie</li>
-        <li className="list-group-item">metapod</li>
-        <li className="list-group-item">butterfree</li>
+        {items}
       </ul>
     );
   }

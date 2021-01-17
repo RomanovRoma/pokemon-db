@@ -20,7 +20,7 @@ export default class PokeService {
     return this._transformPokemon(pokemon)
   }
 
-  _transformPokemon(pokemon) {
+  _transformPokemon = (pokemon) => {
     return {
       id: pokemon.id,
       name: pokemon.name,

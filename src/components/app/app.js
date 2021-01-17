@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Header from '../header'
 import PokemonList from '../pokemon-list'
@@ -6,20 +6,31 @@ import PokemonDetails from '../pokemon-details'
 
 import './app.css'
 
-const App = () => {
-  return (
-    <div>
-      <Header />
-      <div className="row mb2">
-        <div className="col-md-6">
-          <PokemonList />
-        </div>
-        <div className="col-md-6">
-          <PokemonDetails />
+export default class App extends Component {
+
+  state ={
+    selectedPokemon: null
+  }
+
+  onPokemonSelected = (id) => {
+    this.setState({
+      selectedPokemon: id
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <div className="row mb2">
+          <div className="col-md-6">
+            <PokemonList onItemSelected={this.onPokemonSelected} />
+          </div>
+          <div className="col-md-6">
+            <PokemonDetails pokemonId={this.state.selectedPokemon} />
+          </div>
         </div>
       </div>
-    </div>
-  )
+    );
+  }
 }
-
-export default App
