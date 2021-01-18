@@ -24,13 +24,16 @@ export default class PokemonList extends Component {
 
   renderItems(arr) {
     return arr.map(({name}) => {
+      const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
       return (
-        <li className="list-group-item"
-            key={name}
-            onClick={() => this.props.onItemSelected(name)}>
-          {name}
+        <li
+          className="list-group-item"
+          key={nameCapitalized}
+          onClick={() => this.props.onItemSelected(name)}
+        >
+          {nameCapitalized}
         </li>
-      )
+      );
     })
   }
 

@@ -5,6 +5,7 @@ import PokemonList from '../pokemon-list'
 import PokemonDetails from '../pokemon-details'
 
 import './app.css'
+import AbilityDetails from '../ability-details/ability-details'
 
 export default class App extends Component {
 
@@ -29,6 +30,9 @@ export default class App extends Component {
           <div className="col-md-6">
             <PokemonDetails pokemonId={this.state.selectedPokemon} />
           </div>
+          {/* <div className="col-md-6">
+            <AbilityDetails />
+          </div> */}
         </div>
       </div>
     );

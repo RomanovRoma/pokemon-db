@@ -38,18 +38,19 @@ export default class PokemonDetails extends Component {
       return <span>Select a pokemon from list</span>;
     }
 
-    const { id, name, experience, height, weight, types } = this.state.pokemon;
+    const { id, name, experience, height, weight, types, abilities } = this.state.pokemon;
+    const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
 
     return (
       <div className="pokemon-details card">
         <img
           className="pokemon-image"
           src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
-          alt={name}
+          alt={nameCapitalized}
         />
 
         <div className="card-body">
-          <h4>{name}</h4>
+          <h4>{nameCapitalized}</h4>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <span className="term">Base Experience</span>
@@ -68,10 +69,24 @@ export default class PokemonDetails extends Component {
               {types.map((it, index, array) => {
                 return (
                   <span key={it.type.name}>
-                    {index !== array.length - 1 ? `${it.type.name}, ` : `${it.type.name}` }
+                    {index !== array.length - 1
+                      ? `${it.type.name}, `
+                      : `${it.type.name}`}
                   </span>
                 );
               })}
+            </li>
+            <li className="list-group-item">
+              <span className="term">Abilities</span>
+              <ul className="list-group list-group-flush">
+                {abilities.map((it) => {
+                  return (
+                    <li className="list-group-item" key={it.ability.name}>
+                      <a href="#">{it.ability.name}</a>
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
           </ul>
         </div>
