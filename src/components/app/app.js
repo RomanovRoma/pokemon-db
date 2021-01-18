@@ -9,7 +9,7 @@ import './app.css'
 export default class App extends Component {
 
   state ={
-    selectedPokemon: 5
+    selectedPokemon: null
   }
 
   onPokemonSelected = (id) => {

@@ -10,16 +10,6 @@ export default class PokemonDetails extends Component {
     pokemon: null,
   };
 
-  componentDidMount() {
-    this.updatePokemon();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.pokemonId !== prevProps.pokemonId) {
-      this.updatePokemon();
-    }
-  }
-
   updatePokemon() {
     const { pokemonId } = this.props;
     if (!pokemonId) {
@@ -31,6 +21,16 @@ export default class PokemonDetails extends Component {
         pokemon,
       });
     });
+  }
+
+  componentDidMount() {
+    this.updatePokemon();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.pokemonId !== prevProps.pokemonId) {
+      this.updatePokemon();
+    }
   }
 
   render() {
@@ -64,9 +64,13 @@ export default class PokemonDetails extends Component {
               <span>{weight}</span>
             </li>
             <li className="list-group-item">
-              <span className="term">types</span>
-              {types.map((it) => {
-                return <span key={it.type.name}>{it.type.name}</span>;
+              <span className="term">Types</span>
+              {types.map((it, index, array) => {
+                return (
+                  <span key={it.type.name}>
+                    {index !== array.length - 1 ? `${it.type.name}, ` : `${it.type.name}` }
+                  </span>
+                );
               })}
             </li>
           </ul>
