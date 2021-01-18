@@ -12,12 +12,22 @@ export default class PokeService {
 
   async getAllPokemons() {
     const res = await this.getResource(`/pokemon/`);
-    return res.results.map(this._transformPokemon)
+    return res.results.map(this._transformPokemon);
   }
 
   async getPokemon(id) {
     const pokemon = await this.getResource(`/pokemon/${id}/`);
-    return this._transformPokemon(pokemon)
+    return this._transformPokemon(pokemon);
+  }
+
+  async getAllAbilities() {
+    const res = await this.getResource(`/ability/`);
+    return res.results.map(this._transformAbilitity);
+  }
+
+  async getAbility(id) {
+    const ability = await this.getResource(`/ability/${id}`);
+    return this._transformAbilitity(ability);
   }
 
   _transformPokemon = (pokemon) => {
@@ -28,7 +38,15 @@ export default class PokeService {
       height: pokemon.height,
       weight: pokemon.weight,
       types: pokemon.types,
-      abilities: pokemon.abilities
-    }
-  }
+      abilities: pokemon.abilities,
+    };
+  };
+
+  _transformAbilitity = (ability) => {
+    return {
+      id: ability.id,
+      name: ability.name,
+      effect: ability.effect_entries,
+    };
+  };
 }
