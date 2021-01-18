@@ -30,9 +30,9 @@ export default class App extends Component {
           <div className="col-md-6">
             <PokemonDetails pokemonId={this.state.selectedPokemon} />
           </div>
-          {/* <div className="col-md-6">
+          <div className="col-md-6">
             <AbilityDetails />
-          </div> */}
+          </div>
         </div>
       </div>
     );
