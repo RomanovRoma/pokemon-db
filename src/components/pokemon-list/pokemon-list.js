@@ -23,11 +23,11 @@ export default class PokemonList extends Component {
   }
 
   renderItems(arr) {
-    return arr.map(({id, name}) => {
+    return arr.map(({name}) => {
       return (
         <li className="list-group-item"
             key={name}
-            onClick={() => this.props.onItemSelected(id)}>
+            onClick={() => this.props.onItemSelected(name)}>
           {name}
         </li>
       )
