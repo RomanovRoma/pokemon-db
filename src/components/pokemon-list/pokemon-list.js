@@ -23,15 +23,16 @@ class PokemonList extends Component {
   // }
 
   componentDidMount() {
-    const {
-      pokemonService,
-      fetchAllPokemonsSuccess,
-      fetchAllPokemonsRequest,
-      fetchAllPokemonsFailure } = this.props
-    fetchAllPokemonsRequest()
-    pokemonService.getAllPokemons()
-      .then((data) => fetchAllPokemonsSuccess(data))
-      .catch((err) => fetchAllPokemonsFailure(err))
+    this.props.fetchAllPokemons()
+    // const {
+    //   pokemonService,
+    //   fetchAllPokemonsSuccess,
+    //   fetchAllPokemonsRequest,
+    //   fetchAllPokemonsFailure } = this.props
+    // fetchAllPokemonsRequest()
+    // pokemonService.getAllPokemons()
+    //   .then((data) => fetchAllPokemonsSuccess(data))
+    //   .catch((err) => fetchAllPokemonsFailure(err))
 
     // this.pokemonService
     //   .getAllPokemons()
@@ -102,10 +103,17 @@ const mapStateToProps = ({ pokemons, loading, error }) => {
   return { pokemons, loading, error }
 }
 
-const mapDispatchToProps = {
-  fetchAllPokemonsSuccess,
-  fetchAllPokemonsRequest,
-  fetchAllPokemonsFailure
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { pokemonService } = ownProps
+  return {
+    fetchAllPokemons: () => {
+
+      dispatch(fetchAllPokemonsRequest())
+      pokemonService.getAllPokemons()
+        .then((data) => dispatch(fetchAllPokemonsSuccess(data)))
+        .catch((err) => dispatch(fetchAllPokemonsFailure(err)))
+    }
+  }
 }
 
 export default compose(
