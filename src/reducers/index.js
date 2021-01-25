@@ -1,6 +1,6 @@
 const initialState = {
   pokemons: [],
-  pokemon: []
+  loading: true
 }
 
 const reducer = (state = initialState, action) => {
@@ -8,7 +8,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_ALL_POKEMONS_SUCCESS':
       return {
-        pokemons: action.payload
+        pokemons: action.payload,
+        loading: false
       }
     case 'FETCH_POKEMON_SUCCESS':
       return {

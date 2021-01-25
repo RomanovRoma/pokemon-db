@@ -60,7 +60,12 @@ class PokemonList extends Component {
     // }
 
     // const items = this.renderItems(pokemonList)
-    const { pokemons } = this.props
+    const { pokemons, loading } = this.props
+
+    if (loading) {
+      return <Spinner />
+    }
+    
     return (
       <ul className="pokemon-list">
         {
@@ -78,8 +83,8 @@ class PokemonList extends Component {
   }
 }
 
-const mapStateToProps = ({ pokemons }) => {
-  return { pokemons }
+const mapStateToProps = ({ pokemons, loading }) => {
+  return { pokemons, loading }
 }
 
 const mapDispatchToProps = {
