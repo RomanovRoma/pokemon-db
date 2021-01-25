@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
       return {
         pokemons: action.payload
       }
-      
+
     default:
       return state;
   }
