@@ -19,6 +19,14 @@ const fetchAllPokemonsFailure = (error) => {
   };
 }
 
+const fetchAllPokemons = (pokemonService, dispatch) => () => {
+  dispatch(fetchAllPokemonsRequest());
+  pokemonService
+    .getAllPokemons()
+    .then((data) => dispatch(fetchAllPokemonsSuccess(data)))
+    .catch((err) => dispatch(fetchAllPokemonsFailure(err)));
+};
+
 const fetchPokemonSuccess = (newPokemon) => {
   return {
     type: 'FETCH_POKEMON_SUCCESS',
@@ -27,8 +35,5 @@ const fetchPokemonSuccess = (newPokemon) => {
 }
 
 export {
-  fetchAllPokemonsSuccess,
-  fetchAllPokemonsRequest,
-  fetchAllPokemonsFailure,
-  fetchPokemonSuccess,
+  fetchAllPokemons
 };

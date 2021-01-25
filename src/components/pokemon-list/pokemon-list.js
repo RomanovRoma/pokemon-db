@@ -6,9 +6,7 @@ import PokemonListItem from '../pokemon-list-item'
 
 import { withPokemonService } from '../hoc'
 import {
-  fetchAllPokemonsSuccess,
-  fetchAllPokemonsRequest,
-  fetchAllPokemonsFailure
+  fetchAllPokemons
 } from "../../actions";
 import { compose } from '../../utils'
 
@@ -103,16 +101,9 @@ const mapStateToProps = ({ pokemons, loading, error }) => {
   return { pokemons, loading, error }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const { pokemonService } = ownProps
+const mapDispatchToProps = (dispatch, {pokemonService}) => {
   return {
-    fetchAllPokemons: () => {
-
-      dispatch(fetchAllPokemonsRequest())
-      pokemonService.getAllPokemons()
-        .then((data) => dispatch(fetchAllPokemonsSuccess(data)))
-        .catch((err) => dispatch(fetchAllPokemonsFailure(err)))
-    }
+    fetchAllPokemons: fetchAllPokemons(pokemonService, dispatch)
   }
 }
 
