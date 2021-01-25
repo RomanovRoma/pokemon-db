@@ -61,7 +61,7 @@ class PokemonList extends Component {
     // const items = this.renderItems(pokemonList)
     const { pokemons } = this.props
     return (
-      <div className="item-list list-group">
+      <ul className="pokemon-list">
         {
           pokemons.map((pokemon) => {
             return (
@@ -69,7 +69,7 @@ class PokemonList extends Component {
             )
           })
         }
-      </div>
+      </ul>
       // <div className="item-list list-group">
       //   {items}
       // </div>

@@ -1,4 +1,4 @@
-.item-list .list-group-item {
+/* .item-list .list-group-item {
   cursor: pointer;
   display: ;
   flex-wrap: wrap;
@@ -7,4 +7,9 @@
 
 .item-list .list-group-item:hover {
   background-color: lightcoral;
+} */
+
+.pokemon-list {
+  list-style: none;
 }
+

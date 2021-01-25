@@ -4,8 +4,19 @@ import './pokemon-list-item.css'
 const PokemonListItem = ({ pokemon }) => {
   const { id, name } = pokemon
   return (
-    <span>{name}</span>
-  )
+    <div className="pokemon-list-item">
+      <div className="pokemon-img">
+        <img
+            className="pokemon-image"
+            src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+            alt={name}
+          />
+      </div>
+      <div className="pokemon-details">
+        <div className="pokemon-name">{name.charAt(0).toUpperCase() + name.slice(1)}</div>
+      </div>
+    </div>
+  );
 }
 
 export default PokemonListItem

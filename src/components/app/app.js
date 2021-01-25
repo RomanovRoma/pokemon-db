@@ -23,11 +23,14 @@ const App = () => {
 
   // render() {
     return (
-      <Switch>
-        <Route path="/" component={HomePage} exact />
-        <Route path="/pokemon" component={PokemonPage} />
-      </Switch>
-    )
+      <main role="main" className="container">
+        <Header />
+        <Switch>
+          <Route path="/" component={HomePage} exact />
+          <Route path="/pokemon" component={PokemonPage} />
+        </Switch>
+      </main>
+    );
     //   <div>
     //     <Header />
     //     <div className="row mb2">
