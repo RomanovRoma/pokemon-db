@@ -1,5 +1,6 @@
 .item-list .list-group-item {
   cursor: pointer;
+  display: ;
   flex-wrap: wrap;
   justify-content: space-around;
 }

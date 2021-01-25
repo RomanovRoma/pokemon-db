@@ -27,7 +27,7 @@ export default class PokeService {
 
   async getAbility(id) {
     const ability = await this.getResource(`/ability/${id}`);
-    return this._transformAbilitity(ability);
+    return this._transformAbility(ability);
   }
 
   _transformPokemon = (pokemon) => {
@@ -42,7 +42,7 @@ export default class PokeService {
     };
   };
 
-  _transformAbilitity = (ability) => {
+  _transformAbility = (ability) => {
     return {
       id: ability.id,
       name: ability.name,

@@ -23,16 +23,21 @@ export default class PokemonList extends Component {
   }
 
   renderItems(arr) {
-    return arr.map(({name}) => {
+    return arr.map(({id, name}) => {
       const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
       return (
-        <li
+        <div
           className="list-group-item"
           key={nameCapitalized}
           onClick={() => this.props.onItemSelected(name)}
         >
           {nameCapitalized}
-        </li>
+          <img
+            className="pokemon-image"
+            src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
+            alt={nameCapitalized}
+          />
+        </div>
       );
     })
   }
@@ -48,9 +53,9 @@ export default class PokemonList extends Component {
     const items = this.renderItems(pokemonList)
 
     return (
-      <ul className="item-list list-group">
+      <div className="item-list list-group">
         {items}
-      </ul>
+      </div>
     );
   }
 }

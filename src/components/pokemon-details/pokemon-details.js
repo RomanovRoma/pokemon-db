@@ -78,15 +78,13 @@ export default class PokemonDetails extends Component {
             </li>
             <li className="list-group-item">
               <span className="term">Abilities</span>
-              <ul className="list-group list-group-flush">
-                {abilities.map((it) => {
+                {abilities.map((it, type, array) => {
                   return (
                     <li className="list-group-item" key={it.ability.name}>
-                      <a href="#">{it.ability.name}</a>
+                      <span>{it.ability.name}</span>
                     </li>
                   );
                 })}
-              </ul>
             </li>
           </ul>
         </div>
