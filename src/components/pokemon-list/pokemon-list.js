@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PokemonListItem from '../pokemon-list-item'
 
 import { withPokemonService } from '../hoc'
-import { fetchPokemonsSuccess } from '../../actions'
+import { fetchAllPokemonsSuccess } from '../../actions'
 import { compose } from '../../utils'
 
 import './pokemon-list.css'
@@ -18,9 +18,10 @@ class PokemonList extends Component {
   // }
 
   componentDidMount() {
-    const { pokemonService, fetchPokemonsSuccess } = this.props
+    const { pokemonService, fetchAllPokemonsSuccess } = this.props
     pokemonService.getAllPokemons()
-      .then((data) => fetchPokemonsSuccess(data))
+      .then((data) => fetchAllPokemonsSuccess(data))
+
     // this.pokemonService
     //   .getAllPokemons()
     //   .then((pokemonList) => {
@@ -65,7 +66,7 @@ class PokemonList extends Component {
         {
           pokemons.map((pokemon) => {
             return (
-              <li key={pokemon.id}><PokemonListItem pokemon={pokemon} /></li>
+              <li key={pokemon.name}><PokemonListItem pokemon={pokemon}/></li>
             )
           })
         }
@@ -82,7 +83,7 @@ const mapStateToProps = ({ pokemons }) => {
 }
 
 const mapDispatchToProps = {
-  fetchPokemonsSuccess
+  fetchAllPokemonsSuccess
 }
 
 export default compose(

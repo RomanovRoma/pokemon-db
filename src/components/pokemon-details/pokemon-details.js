@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PokemonService from '../../services/pokemon-service';
+import { connect } from 'react-redux'
+import { withPokemonService } from '../hoc'
 
 import './pokemon-details.css'
 
-export default class PokemonDetails extends Component {
+class PokemonDetails extends Component {
   pokemonService = new PokemonService();
 
   state = {
@@ -92,3 +94,16 @@ export default class PokemonDetails extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ pokemons }) => {
+  return { pokemons };
+};
+
+const mapDispatchToProps = {
+  fetchAllPokemonsSuccess,
+};
+
+export default compose(
+  withPokemonService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(PokemonList);

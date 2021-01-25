@@ -1,11 +1,19 @@
 
-const fetchPokemonsSuccess = (newPokemons) => {
+const fetchAllPokemonsSuccess = (newPokemons) => {
   return {
-    type: 'FETCH_POKEMONS_SUCCESS',
+    type: 'FETCH_ALL_POKEMONS_SUCCESS',
     payload: newPokemons
   }
 }
 
+const fetchPokemonSuccess = (newPokemon) => {
+  return {
+    type: 'FETCH_POKEMON_SUCCESS',
+    payload: newPokemon
+  }
+}
+
 export {
-  fetchPokemonsSuccess
+  fetchAllPokemonsSuccess,
+  fetchPokemonSuccess
 }

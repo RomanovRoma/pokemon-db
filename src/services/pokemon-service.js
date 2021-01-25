@@ -12,7 +12,7 @@ export default class PokemonService {
 
   async getAllPokemons() {
     const res = await this.getResource(`/pokemon/`);
-    return res.results.map(this._transformPokemon);
+    return res.results.map(this._transformPokemons);
   }
 
   async getPokemon(id) {
@@ -29,6 +29,16 @@ export default class PokemonService {
     const ability = await this.getResource(`/ability/${id}`);
     return this._transformAbility(ability);
   }
+
+  _transformPokemons = (pokemon) => {
+    const idRegExp = /\/([0-9]*)\/$/
+    const id = pokemon.url.match(idRegExp)[1]
+
+    return {
+      id,
+      name: pokemon.name
+    };
+  };
 
   _transformPokemon = (pokemon) => {
     return {
