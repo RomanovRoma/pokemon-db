@@ -1,37 +1,41 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { withPokemonService } from '../hoc'
 
 import Header from '../header'
-import PokemonList from '../pokemon-list'
-import PokemonDetails from '../pokemon-details'
+// import PokemonList from '../pokemon-list'
+// import PokemonDetails from '../pokemon-details'
 
 import './app.css'
 
-export default class App extends Component {
+const App = ({pokemonService}) => {
 
-  state ={
-    selectedPokemon: null,
-    selectedAbility: 5
-  }
+  // state ={
+  //   selectedPokemon: null,
+  //   selectedAbility: 5
+  // }
 
-  onPokemonSelected = (id) => {
-    this.setState({
-      selectedPokemon: id
-    })
-  }
+  // onPokemonSelected = (id) => {
+  //   this.setState({
+  //     selectedPokemon: id
+  //   })
+  // }
 
-  render() {
+  // render() {
+    console.log(pokemonService.getAllPokemons())
     return (
       <div>
         <Header />
         <div className="row mb2">
           <div className="col-md-6">
-            <PokemonList onItemSelected={this.onPokemonSelected} />
+            {/* <PokemonList onItemSelected={this.onPokemonSelected} /> */}
           </div>
           <div className="col-md-6">
-            <PokemonDetails pokemonId={this.state.selectedPokemon} />
+            {/* <PokemonDetails pokemonId={this.state.selectedPokemon} /> */}
           </div>
         </div>
       </div>
     );
-  }
+  // }
 }
+
+export default withPokemonService()(App)
