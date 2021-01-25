@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import PokemonService from '../../services/pokemon-service';
 import Spinner from '../spinner/spinner';
 import { connect } from 'react-redux'
 import PokemonListItem from '../pokemon-list-item'
 
 import { withPokemonService } from '../hoc'
 import { fetchPokemonsSuccess } from '../../actions'
+import { compose } from '../../utils'
 
 import './pokemon-list.css'
 
@@ -85,5 +85,7 @@ const mapDispatchToProps = {
   fetchPokemonsSuccess
 }
 
-export default withPokemonService()(
-  connect(mapStateToProps, mapDispatchToProps)(PokemonList))
+export default compose(
+  withPokemonService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(PokemonList)
