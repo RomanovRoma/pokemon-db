@@ -1,9 +1,9 @@
 import {
-  PokeServiceProvider,
-  PokeServiceConsumer
+  PokemonServiceProvider,
+  PokemonServiceConsumer
 } from './pokemon-service-context'
 
 export {
-  PokeServiceProvider,
-  PokeServiceConsumer
+  PokemonServiceProvider,
+  PokemonServiceConsumer
 }

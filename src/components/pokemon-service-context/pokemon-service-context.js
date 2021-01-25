@@ -1,11 +1,11 @@
 import React from 'react'
 
 const {
-  Provider: PokeServiceProvider,
-  Consumer: PokeServiceConsumer
+  Provider: PokemonServiceProvider,
+  Consumer: PokemonServiceConsumer
 } = React.createContext()
 
 export {
-  PokeServiceProvider,
-  PokeServiceConsumer
+  PokemonServiceProvider,
+  PokemonServiceConsumer
 }

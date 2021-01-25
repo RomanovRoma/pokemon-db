@@ -1,4 +1,4 @@
-export default class PokeService {
+export default class PokemonService {
   _apiBase = "https://pokeapi.co/api/v2";
 
   async getResource(url) {

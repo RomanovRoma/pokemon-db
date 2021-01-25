@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import PokeService from '../../services/poke-service';
+import PokemonService from '../../services/pokemon-service';
 
 import './pokemon-details.css'
 
 export default class PokemonDetails extends Component {
-  pokeService = new PokeService();
+  pokemonService = new PokemonService();
 
   state = {
     pokemon: null,
@@ -16,7 +16,7 @@ export default class PokemonDetails extends Component {
       return;
     }
 
-    this.pokeService.getPokemon(pokemonId).then((pokemon) => {
+    this.pokemonService.getPokemon(pokemonId).then((pokemon) => {
       this.setState({
         pokemon,
       });

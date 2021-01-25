@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import PokeService from '../../services/poke-service';
+import PokemonService from '../../services/poke-service';
 
 import './ability-details.css'
 
 export default class AbilityDetails extends Component {
 
-  pokeService = new PokeService()
+  pokemonService = new PokemonService()
 
   state = {
     ability: []
@@ -17,7 +17,7 @@ export default class AbilityDetails extends Component {
       return
     }
 
-    this.pokeService.getAbility(abilityId).then((ability) => {
+    this.pokemonService.getAbility(abilityId).then((ability) => {
       this.setState({
         ability
       })

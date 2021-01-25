@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
-import PokeService from '../../services/poke-service';
+import PokemonService from '../../services/pokemon-service';
 import Spinner from '../spinner/spinner';
 
 import './pokemon-list.css'
 
 export default class PokemonList extends Component {
 
-  pokeService = new PokeService()
+  pokemonService = new PokemonService()
 
   state = {
     pokemonList: null
   }
 
   componentDidMount() {
-    this.pokeService
+    this.pokemonService
       .getAllPokemons()
       .then((pokemonList) => {
         this.setState({
