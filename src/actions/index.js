@@ -6,6 +6,19 @@ const fetchAllPokemonsSuccess = (newPokemons) => {
   }
 }
 
+const fetchAllPokemonsRequest = () => {
+  return {
+    type: 'FETCH_ALL_POKEMONS_REQUEST'
+  };
+}
+
+const fetchAllPokemonsFailure = (error) => {
+  return {
+    type: "FETCH_ALL_POKEMONS_FAILURE",
+    payload: error
+  };
+}
+
 const fetchPokemonSuccess = (newPokemon) => {
   return {
     type: 'FETCH_POKEMON_SUCCESS',
@@ -15,5 +28,7 @@ const fetchPokemonSuccess = (newPokemon) => {
 
 export {
   fetchAllPokemonsSuccess,
-  fetchPokemonSuccess
-}
+  fetchAllPokemonsRequest,
+  fetchAllPokemonsFailure,
+  fetchPokemonSuccess,
+};

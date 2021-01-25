@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import Spinner from '../spinner/spinner';
+import ErrorIndicator from '../error-indicator'
 import { connect } from 'react-redux'
 import PokemonListItem from '../pokemon-list-item'
 
 import { withPokemonService } from '../hoc'
-import { fetchAllPokemonsSuccess } from '../../actions'
+import {
+  fetchAllPokemonsSuccess,
+  fetchAllPokemonsRequest,
+  fetchAllPokemonsFailure
+} from "../../actions";
 import { compose } from '../../utils'
 
 import './pokemon-list.css'
@@ -18,9 +23,15 @@ class PokemonList extends Component {
   // }
 
   componentDidMount() {
-    const { pokemonService, fetchAllPokemonsSuccess } = this.props
+    const {
+      pokemonService,
+      fetchAllPokemonsSuccess,
+      fetchAllPokemonsRequest,
+      fetchAllPokemonsFailure } = this.props
+    fetchAllPokemonsRequest()
     pokemonService.getAllPokemons()
       .then((data) => fetchAllPokemonsSuccess(data))
+      .catch((err) => fetchAllPokemonsFailure(err))
 
     // this.pokemonService
     //   .getAllPokemons()
@@ -60,12 +71,16 @@ class PokemonList extends Component {
     // }
 
     // const items = this.renderItems(pokemonList)
-    const { pokemons, loading } = this.props
+    const { pokemons, loading, error } = this.props
 
     if (loading) {
       return <Spinner />
     }
-    
+
+    if (error) {
+      return <ErrorIndicator />
+    }
+
     return (
       <ul className="pokemon-list">
         {
@@ -83,12 +98,14 @@ class PokemonList extends Component {
   }
 }
 
-const mapStateToProps = ({ pokemons, loading }) => {
-  return { pokemons, loading }
+const mapStateToProps = ({ pokemons, loading, error }) => {
+  return { pokemons, loading, error }
 }
 
 const mapDispatchToProps = {
-  fetchAllPokemonsSuccess
+  fetchAllPokemonsSuccess,
+  fetchAllPokemonsRequest,
+  fetchAllPokemonsFailure
 }
 
 export default compose(

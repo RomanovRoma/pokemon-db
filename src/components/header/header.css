@@ -15,10 +15,10 @@
   text-decoration: none;
 }
 
-.header h3 a {
+.header .logo {
   color: brown;
 }
 
-.header h3 a:hover {
+.header .logo:hover {
   color: cornflowerblue;
 }
