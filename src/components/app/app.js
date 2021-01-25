@@ -1,5 +1,6 @@
 import React from 'react'
-import { withPokemonService } from '../hoc'
+import { Route, Switch } from 'react-router-dom'
+import { HomePage, PokemonPage } from '../pages'
 
 import Header from '../header'
 // import PokemonList from '../pokemon-list'
@@ -7,7 +8,7 @@ import Header from '../header'
 
 import './app.css'
 
-const App = ({pokemonService}) => {
+const App = () => {
 
   // state ={
   //   selectedPokemon: null,
@@ -21,21 +22,25 @@ const App = ({pokemonService}) => {
   // }
 
   // render() {
-    console.log(pokemonService.getAllPokemons())
     return (
-      <div>
-        <Header />
-        <div className="row mb2">
-          <div className="col-md-6">
-            {/* <PokemonList onItemSelected={this.onPokemonSelected} /> */}
-          </div>
-          <div className="col-md-6">
-            {/* <PokemonDetails pokemonId={this.state.selectedPokemon} /> */}
-          </div>
-        </div>
-      </div>
-    );
+      <Switch>
+        <Route path="/" component={HomePage} exact />
+        <Route path="/pokemon" component={PokemonPage} />
+      </Switch>
+    )
+    //   <div>
+    //     <Header />
+    //     <div className="row mb2">
+    //       <div className="col-md-6">
+    //         {/* <PokemonList onItemSelected={this.onPokemonSelected} /> */}
+    //       </div>
+    //       <div className="col-md-6">
+    //         {/* <PokemonDetails pokemonId={this.state.selectedPokemon} /> */}
+    //       </div>
+    //     </div>
+    //   </div>
+    // );
   // }
 }
 
-export default withPokemonService()(App)
+export default App
