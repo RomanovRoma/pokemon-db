@@ -3,8 +3,10 @@ import PokemonList from '../pokemon-list/pokemon-list'
 
 const HomePage = () => {
   return (
-    <PokemonList />
-  )
+    <div className="col-md-6">
+      <PokemonList />
+    </div>
+  );
 }
 
 export default HomePage

@@ -58,29 +58,6 @@ const fetchPokemon = (pokemonService, dispatch) => () => {
       .catch((err) => dispatch(fetchPokemonFailure(err)));
 };
 
-  // updatePokemon() {
-  //   const { pokemonId } = this.props;
-  //   if (!pokemonId) {
-  //     return;
-  //   }
-
-  //   this.pokemonService.getPokemon(pokemonId).then((pokemon) => {
-  //     this.setState({
-  //       pokemon,
-  //     });
-  //   });
-  // }
-
-  // componentDidMount() {
-  //   this.updatePokemon();
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.pokemonId !== prevProps.pokemonId) {
-  //     this.updatePokemon();
-  //   }
-  // }
-
 export {
   fetchAllPokemons,
   fetchPokemon

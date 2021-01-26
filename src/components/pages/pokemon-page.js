@@ -3,8 +3,10 @@ import PokemonDetails from '../pokemon-details'
 
 const PokemonPage = () => {
   return (
-    <PokemonDetails />
-  )
+    <div className="col-md-6">
+      <PokemonDetails />
+    </div>
+  );
 }
 
 export default PokemonPage

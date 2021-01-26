@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { PokemonPage } from '../pages'
+import { HomePage } from '../pages'
 
 import Header from '../header'
 // import PokemonList from '../pokemon-list'
@@ -25,23 +25,25 @@ const App = () => {
     return (
       <main role="main" className="container">
         <Header />
-        <Switch>
-          {/* <Route path="/" component={HomePage} exact /> */}
-          <Route path="/pokemon" component={PokemonPage} />
-        </Switch>
+        <div className="row mb2">
+          <Switch>
+            <Route path="/" component={HomePage} exact />
+            {/* <Route path="/pokemon" component={PokemonPage} /> */}
+          </Switch>
+        </div>
       </main>
     );
-    //   <div>
-    //     <Header />
-    //     <div className="row mb2">
-    //       <div className="col-md-6">
-    //         {/* <PokemonList onItemSelected={this.onPokemonSelected} /> */}
-    //       </div>
-    //       <div className="col-md-6">
-    //         {/* <PokemonDetails pokemonId={this.state.selectedPokemon} /> */}
-    //       </div>
-    //     </div>
-    //   </div>
+      <div>
+        <Header />
+        <div className="row mb2">
+          <div className="col-md-6">
+            {/* <PokemonList onItemSelected={this.onPokemonSelected} /> */}
+          </div>
+          <div className="col-md-6">
+            {/* <PokemonDetails pokemonId={this.state.selectedPokemon} /> */}
+          </div>
+        </div>
+      </div>
     // );
   // }
 }
