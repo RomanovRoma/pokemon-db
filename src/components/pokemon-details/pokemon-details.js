@@ -1,46 +1,71 @@
 import React, { Component } from 'react'
-import PokemonService from '../../services/pokemon-service';
 import { connect } from 'react-redux'
 import { withPokemonService } from '../hoc'
+import { fetchPokemon } from '../../actions'
+import { compose } from '../../utils'
 
+import ErrorIndicator from '../error-indicator/error-indicator'
+import Spinner from '../spinner/spinner'
 import './pokemon-details.css'
 
 class PokemonDetails extends Component {
-  pokemonService = new PokemonService();
+  // updatePokemon() {
+  //   const { pokemonId } = this.props;
+  //   if (!pokemonId) {
+  //     return;
+  //   }
 
-  state = {
-    pokemon: null,
-  };
+  //   this.pokemonService.getPokemon(pokemonId).then((pokemon) => {
+  //     this.setState({
+  //       pokemon,
+  //     });
+  //   });
+  // }
 
-  updatePokemon() {
-    const { pokemonId } = this.props;
-    if (!pokemonId) {
-      return;
-    }
+  // componentDidMount() {
+  //   this.updatePokemon();
+  // }
 
-    this.pokemonService.getPokemon(pokemonId).then((pokemon) => {
-      this.setState({
-        pokemon,
-      });
-    });
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.pokemonId !== prevProps.pokemonId) {
+  //     this.updatePokemon();
+  //   }
+  // }
 
   componentDidMount() {
-    this.updatePokemon();
+    this.props.fetchPokemon();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.pokemonId !== prevProps.pokemonId) {
-      this.updatePokemon();
+      this.props.fetchPokemon();
     }
   }
 
   render() {
-    if (!this.state.pokemon) {
+    const { pokemon, loading, error } = this.props;
+
+    if (loading) {
+      return <Spinner />;
+    }
+
+    if (error) {
+      return <ErrorIndicator />;
+    }
+
+    if (!pokemon) {
       return <span>Select a pokemon from list</span>;
     }
 
-    const { id, name, experience, height, weight, types, abilities } = this.state.pokemon;
+    const {
+      id,
+      name,
+      experience,
+      height,
+      weight,
+      types,
+      abilities,
+    } = this.props.pokemon;
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
 
     return (
@@ -80,13 +105,13 @@ class PokemonDetails extends Component {
             </li>
             <li className="list-group-item">
               <span className="term">Abilities</span>
-                {abilities.map((it, type, array) => {
-                  return (
-                    <li className="list-group-item" key={it.ability.name}>
-                      <span>{it.ability.name}</span>
-                    </li>
-                  );
-                })}
+              {abilities.map((it, type, array) => {
+                return (
+                  <li className="list-group-item" key={it.ability.name}>
+                    <span>{it.ability.name}</span>
+                  </li>
+                );
+              })}
             </li>
           </ul>
         </div>
@@ -95,16 +120,17 @@ class PokemonDetails extends Component {
   }
 }
 
-export default PokemonDetails
-// const mapStateToProps = ({ pokemons }) => {
-//   return { pokemons };
-// };
+const mapStateToProps = ({ pokemonDetails: { pokemon, loading, error } }) => {
+  return { pokemon, loading, error };
+};
 
-// const mapDispatchToProps = {
-//   fetchAllPokemonsSuccess,
-// };
+const mapDispatchToProps = (dispatch, { pokemonService }) => {
+  return {
+    fetchPokemon: fetchPokemon(pokemonService, dispatch),
+  };
+};
 
-// export default compose(
-//   withPokemonService(),
-//   connect(mapStateToProps, mapDispatchToProps)
-// )(PokemonList);
+export default compose(
+  withPokemonService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(PokemonDetails);

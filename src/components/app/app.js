@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { HomePage, PokemonPage } from '../pages'
+import { PokemonPage } from '../pages'
 
 import Header from '../header'
 // import PokemonList from '../pokemon-list'
@@ -26,7 +26,7 @@ const App = () => {
       <main role="main" className="container">
         <Header />
         <Switch>
-          <Route path="/" component={HomePage} exact />
+          {/* <Route path="/" component={HomePage} exact /> */}
           <Route path="/pokemon" component={PokemonPage} />
         </Switch>
       </main>

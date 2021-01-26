@@ -27,13 +27,61 @@ const fetchAllPokemons = (pokemonService, dispatch) => () => {
     .catch((err) => dispatch(fetchAllPokemonsFailure(err)));
 };
 
+
 const fetchPokemonSuccess = (newPokemon) => {
   return {
-    type: 'FETCH_POKEMON_SUCCESS',
-    payload: newPokemon
-  }
-}
+    type: "FETCH_POKEMON_SUCCESS",
+    payload: newPokemon,
+  };
+};
+
+const fetchPokemonRequest = () => {
+  return {
+    type: "FETCH_POKEMON_REQUEST",
+  };
+};
+
+const fetchPokemonFailure = (error) => {
+  return {
+    type: "FETCH_POKEMON_FAILURE",
+    payload: error,
+  };
+};
+
+const fetchPokemon = (pokemonService, dispatch) => () => {
+  dispatch(fetchPokemonRequest())
+    if (!pokemonId) {
+      return
+    }
+    pokemonService.getPokemon(pokemonId)
+      .then((data) => dispatch(fetchPokemonSuccess(data)))
+      .catch((err) => dispatch(fetchPokemonFailure(err)));
+};
+
+  // updatePokemon() {
+  //   const { pokemonId } = this.props;
+  //   if (!pokemonId) {
+  //     return;
+  //   }
+
+  //   this.pokemonService.getPokemon(pokemonId).then((pokemon) => {
+  //     this.setState({
+  //       pokemon,
+  //     });
+  //   });
+  // }
+
+  // componentDidMount() {
+  //   this.updatePokemon();
+  // }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.pokemonId !== prevProps.pokemonId) {
+  //     this.updatePokemon();
+  //   }
+  // }
 
 export {
-  fetchAllPokemons
+  fetchAllPokemons,
+  fetchPokemon
 };
