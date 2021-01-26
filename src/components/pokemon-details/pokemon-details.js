@@ -95,15 +95,16 @@ class PokemonDetails extends Component {
   }
 }
 
-const mapStateToProps = ({ pokemons }) => {
-  return { pokemons };
-};
+export default PokemonDetails
+// const mapStateToProps = ({ pokemons }) => {
+//   return { pokemons };
+// };
 
-const mapDispatchToProps = {
-  fetchAllPokemonsSuccess,
-};
+// const mapDispatchToProps = {
+//   fetchAllPokemonsSuccess,
+// };
 
-export default compose(
-  withPokemonService(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(PokemonList);
+// export default compose(
+//   withPokemonService(),
+//   connect(mapStateToProps, mapDispatchToProps)
+// )(PokemonList);

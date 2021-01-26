@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import Spinner from '../spinner/spinner';
-import ErrorIndicator from '../error-indicator'
 import { connect } from 'react-redux'
+
 import PokemonListItem from '../pokemon-list-item'
+import Spinner from "../spinner/spinner";
+import ErrorIndicator from "../error-indicator";
 
 import { withPokemonService } from '../hoc'
-import {
-  fetchAllPokemons
-} from "../../actions";
+import { fetchAllPokemons } from "../../actions";
 import { compose } from '../../utils'
-
 import './pokemon-list.css'
 
 class PokemonList extends Component {
@@ -97,7 +95,7 @@ class PokemonList extends Component {
   }
 }
 
-const mapStateToProps = ({ pokemons, loading, error }) => {
+const mapStateToProps = ({ pokemonList: {pokemons, loading, error} }) => {
   return { pokemons, loading, error }
 }
 

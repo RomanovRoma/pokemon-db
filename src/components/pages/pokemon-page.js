@@ -1,7 +1,10 @@
 import React from 'react'
+import PokemonDetails from '../pokemon-details'
 
 const PokemonPage = () => {
-  return <div>Pokemon Page</div>
+  return (
+    <PokemonDetails />
+  )
 }
 
 export default PokemonPage
