@@ -4,7 +4,7 @@ import { HomePage } from '../pages'
 
 import Header from '../header'
 // import PokemonList from '../pokemon-list'
-// import PokemonDetails from '../pokemon-details'
+import PokemonDetails from '../pokemon-details'
 
 import './app.css'
 
@@ -28,22 +28,25 @@ const App = () => {
         <div className="row mb2">
           <Switch>
             <Route path="/" component={HomePage} exact />
-            {/* <Route path="/pokemon" component={PokemonPage} /> */}
+            <Route path="/:name" render={({match}) => {
+                                  const { name } = match.params
+                                  return <PokemonDetails pokemonName={name} />;
+                                }} />
           </Switch>
         </div>
       </main>
     );
-      <div>
-        <Header />
-        <div className="row mb2">
-          <div className="col-md-6">
-            {/* <PokemonList onItemSelected={this.onPokemonSelected} /> */}
-          </div>
-          <div className="col-md-6">
-            {/* <PokemonDetails pokemonId={this.state.selectedPokemon} /> */}
-          </div>
-        </div>
-      </div>
+      // <div>
+      //   <Header />
+      //   <div className="row mb2">
+      //     <div className="col-md-6">
+      //       {/* <PokemonList onItemSelected={this.onPokemonSelected} /> */}
+      //     </div>
+      //     <div className="col-md-6">
+      //       {/* <PokemonDetails pokemonId={this.state.selectedPokemon} /> */}
+      //     </div>
+      //   </div>
+      // </div>
     // );
   // }
 }

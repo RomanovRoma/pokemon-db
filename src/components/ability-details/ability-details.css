@@ -1,8 +1,0 @@
-.ability-details {
-  display: flex;
-  margin-top: 1rem;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 1rem;
-}

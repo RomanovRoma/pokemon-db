@@ -79,18 +79,22 @@ class PokemonList extends Component {
     }
 
     return (
-      <ul className="pokemon-list">
-        {
-          pokemons.map((pokemon) => {
-            return (
-              <li key={pokemon.name}><PokemonListItem pokemon={pokemon}/></li>
-            )
-          })
-        }
+      <ul className="item-list list-group">
+        {pokemons.map((pokemon) => {
+          return (
+            <li
+              className="list-group-item"
+              key={pokemon.name}
+              onClick={() => this.props.onPokemonSelected(pokemon.name)}
+            >
+              <PokemonListItem
+                pokemon={pokemon}
+                onClick={() => this.props.onPokemonSelected(pokemon.name)}
+              />
+            </li>
+          );
+        })}
       </ul>
-      // <div className="item-list list-group">
-      //   {items}
-      // </div>
     );
   }
 }

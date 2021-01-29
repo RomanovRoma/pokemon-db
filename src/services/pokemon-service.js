@@ -4,7 +4,7 @@ export default class PokemonService {
   async getResource(url) {
     const res = await fetch(`${this._apiBase}${url}`);
 
-    if ((!res.ok) || Math.random() > 0.75) {
+    if (!res.ok || Math.random() > 0.75) {
       throw new Error(`Could not fetch ${url}, received ${res.status}`);
     }
     return await res.json();
@@ -15,18 +15,23 @@ export default class PokemonService {
     return res.results.map(this._transformPokemons);
   }
 
-  async getPokemon(id) {
-    const pokemon = await this.getResource(`/pokemon/${id}/`);
+  // async getPokemon(id) {
+  //   const pokemon = await this.getResource(`/pokemon/${id}/`);
+  //   return this._transformPokemon(pokemon);
+  // }
+
+  async getPokemon(name) {
+    const pokemon = await this.getResource(`/pokemon/${name}/`);
     return this._transformPokemon(pokemon);
   }
 
   _transformPokemons = (pokemon) => {
-    const idRegExp = /\/([0-9]*)\/$/
-    const id = pokemon.url.match(idRegExp)[1]
+    const idRegExp = /\/([0-9]*)\/$/;
+    const id = pokemon.url.match(idRegExp)[1];
 
     return {
       id,
-      name: pokemon.name
+      name: pokemon.name,
     };
   };
 
@@ -39,6 +44,7 @@ export default class PokemonService {
       weight: pokemon.weight,
       types: pokemon.types,
       abilities: pokemon.abilities,
+      stats: pokemon.stats
     };
   };
 }

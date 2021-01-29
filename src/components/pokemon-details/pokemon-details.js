@@ -1,29 +1,46 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withPokemonService } from '../hoc'
+// import { withPokemonService } from '../hoc'
 import { fetchPokemon } from '../../actions'
 import { compose } from '../../utils'
+import PokemonService from "../../services/pokemon-service";
 
 import ErrorIndicator from '../error-indicator/error-indicator'
 import Spinner from '../spinner/spinner'
 import './pokemon-details.css'
 
 class PokemonDetails extends Component {
-  // updatePokemon() {
-  //   const { pokemonId } = this.props;
-  //   if (!pokemonId) {
-  //     return;
-  //   }
+  pokemonService = new PokemonService();
 
-  //   this.pokemonService.getPokemon(pokemonId).then((pokemon) => {
-  //     this.setState({
-  //       pokemon,
-  //     });
-  //   });
-  // }
+  state = {
+    pokemon: null,
+  };
+
+  updatePokemon() {
+    const { pokemonName } = this.props;
+    if (!pokemonName) {
+      return;
+    }
+
+    this.pokemonService.getPokemon(pokemonName).then((pokemon) => {
+      this.setState({
+        pokemon,
+      });
+    });
+  }
+
+  componentDidMount() {
+    this.updatePokemon();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.pokemonName !== prevProps.pokemonName) {
+      this.updatePokemon();
+    }
+  }
 
   // componentDidMount() {
-  //   this.updatePokemon();
+  //   this.props.fetchPokemon();
   // }
 
   // componentDidUpdate(prevProps) {
@@ -32,30 +49,20 @@ class PokemonDetails extends Component {
   //   }
   // }
 
-  componentDidMount() {
-    this.props.fetchPokemon();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.pokemonId !== prevProps.pokemonId) {
-      this.props.fetchPokemon();
-    }
-  }
-
   render() {
-    const { pokemon, loading, error } = this.props;
+    // const { pokemon, loading, error } = this.props;
 
-    if (loading) {
-      return <Spinner />;
-    }
+    // if (loading) {
+    //   return <Spinner />;
+    // }
 
-    if (error) {
-      return <ErrorIndicator />;
-    }
+    // if (error) {
+    //   return <ErrorIndicator />;
+    // }
 
-    if (!pokemon) {
-      return <span>Select a pokemon from list</span>;
-    }
+    // if (!pokemon) {
+    //   return <span>Select a pokemon from list</span>;
+    // }
 
     const {
       id,
@@ -65,7 +72,7 @@ class PokemonDetails extends Component {
       weight,
       types,
       abilities,
-    } = this.props.pokemon;
+    } = this.props.pokemon.name;
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
 
     return (
@@ -120,17 +127,17 @@ class PokemonDetails extends Component {
   }
 }
 
-const mapStateToProps = ({ pokemonDetails: { pokemon, loading, error } }) => {
-  return { pokemon, loading, error };
-};
+// const mapStateToProps = ({ pokemonDetails: { pokemon, loading, error } }) => {
+//   return { pokemon, loading, error };
+// };
 
-const mapDispatchToProps = (dispatch, { pokemonService }) => {
-  return {
-    fetchPokemon: fetchPokemon(pokemonService, dispatch),
-  };
-};
-
-export default compose(
-  withPokemonService(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(PokemonDetails);
+// const mapDispatchToProps = (dispatch, { pokemonService }) => {
+//   return {
+//     fetchPokemon: fetchPokemon(pokemonService, dispatch),
+//   };
+// };
+// export default compose(
+//   withPokemonService(),
+//   connect(mapStateToProps, mapDispatchToProps)
+// )(PokemonDetails);
+export default PokemonDetails

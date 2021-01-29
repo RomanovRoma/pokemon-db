@@ -1,12 +1,13 @@
 .pokemon-list-item {
   display: flex;
   margin: 15px 0;
+  justify-content: center;
 }
 
 .pokemon-list-item .pokemon-img {
   flex-shrink: 0;
-  width: 120px;
-  margin-right: 30px;
+  width: 150px;
+  margin-right: 50px;
 }
 
 .pokemon-list-item .pokemon-img img {
@@ -16,7 +17,7 @@
 .pokemon-list-item .pokemon-details {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   padding-bottom: 10px;
   align-items: flex-start;
 }

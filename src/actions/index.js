@@ -48,12 +48,9 @@ const fetchPokemonFailure = (error) => {
   };
 };
 
-const fetchPokemon = (pokemonService, dispatch) => () => {
+const fetchPokemon = (pokemonService, dispatch) => (id) => {
   dispatch(fetchPokemonRequest())
-    if (!pokemonId) {
-      return
-    }
-    pokemonService.getPokemon(pokemonId)
+    pokemonService.getPokemon(id)
       .then((data) => dispatch(fetchPokemonSuccess(data)))
       .catch((err) => dispatch(fetchPokemonFailure(err)));
 };
