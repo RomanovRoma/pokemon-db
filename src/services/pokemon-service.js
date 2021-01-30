@@ -25,6 +25,19 @@ export default class PokemonService {
     return this._transformPokemon(pokemon);
   }
 
+  async getAbility(abilityName) {
+    const ability = await this.getResource(`/ability/${abilityName}/`);
+    return this._transformAbility(ability);
+  }
+
+  _transformAbility = (ability) => {
+    return {
+      id: ability.id,
+      name: ability.name,
+      effect: ability.effect_entries
+    };
+  };
+
   _transformPokemons = (pokemon) => {
     const idRegExp = /\/([0-9]*)\/$/;
     const id = pokemon.url.match(idRegExp)[1];
@@ -44,7 +57,7 @@ export default class PokemonService {
       weight: pokemon.weight,
       types: pokemon.types,
       abilities: pokemon.abilities,
-      stats: pokemon.stats
+      stats: pokemon.stats,
     };
   };
 }

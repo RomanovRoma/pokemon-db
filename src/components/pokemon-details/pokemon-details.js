@@ -119,13 +119,23 @@ class PokemonDetails extends Component {
             </li>
             <li className="list-group-item">
               <span className="term">Abilities</span>
-              {this.state.pokemon.abilities.map((it, type, array) => {
-                return (
-                  <li className="list-group-item" key={it.ability.name}>
-                    <span>{it.ability.name}</span>
-                  </li>
-                );
-              })}
+              <ul>
+                {this.state.pokemon.abilities.map((it, type, array) => {
+                  return (
+                    <li className="list-group-item" key={it.ability.name}>
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() =>
+                          this.props.onAbilitySelected(it.ability.name)
+                        }
+                      >
+                        {it.ability.name}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
           </ul>
         </div>

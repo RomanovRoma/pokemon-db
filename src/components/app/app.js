@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { HomePage } from '../pages'
+import { HomePage, PokemonPage } from '../pages'
 
 import Header from '../header'
 // import PokemonList from '../pokemon-list'
 import PokemonDetails from '../pokemon-details'
+import AbilityDetails from '../ability-details'
 
 import './app.css'
 
@@ -32,7 +33,14 @@ const App = () => {
               path="/:name"
               render={({ match }) => {
                 const { name } = match.params;
-                return <PokemonDetails pokemonName={name} />;
+                return <PokemonPage pokemonName={name} />;
+              }}
+            />
+            <Route
+              path="/:ability"
+              render={({ match }) => {
+                const { name } = match.params;
+                return <AbilityDetails abilityName={name} />;
               }}
             />
           </Switch>
