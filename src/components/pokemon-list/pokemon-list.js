@@ -80,6 +80,7 @@ class PokemonList extends Component {
 
     return (
       <ul className="item-list list-group">
+        <span className="item-list list-group">Select a pokemon from list</span>
         {pokemons.map((pokemon) => {
           return (
             <li
@@ -89,7 +90,7 @@ class PokemonList extends Component {
             >
               <PokemonListItem
                 pokemon={pokemon}
-                onClick={() => this.props.onPokemonSelected(pokemon.name)}
+                // onClick={() => this.props.onPokemonSelected(pokemon.name)}
               />
             </li>
           );

@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import PokemonService from "../../services/pokemon-service";
 
 // import ErrorIndicator from '../error-indicator/error-indicator'
-// import Spinner from '../spinner/spinner'
+import Spinner from '../spinner/spinner'
 import './pokemon-details.css'
 
 class PokemonDetails extends Component {
@@ -82,7 +82,8 @@ class PokemonDetails extends Component {
           className="pokemon-image"
           src={`https://pokeres.bastionbot.org/images/pokemon/${this.state.pokemon.id}.png`}
           alt={
-            this.state.pokemon.name.charAt(0).toUpperCase() + this.state.pokemon.name.slice(1)
+            this.state.pokemon.name.charAt(0).toUpperCase() +
+            this.state.pokemon.name.slice(1)
           }
         />
 
@@ -130,7 +131,7 @@ class PokemonDetails extends Component {
         </div>
       </div>
     ) : (
-      "Lodofkdfokdlfk"
+      <Spinner />
     );
   }
 }
