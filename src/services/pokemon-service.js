@@ -1,12 +1,12 @@
 export default class PokemonService {
   _apiBase = "https://pokeapi.co/api/v2";
-  debugger;
+
   async getResource(url) {
     const res = await fetch(`${this._apiBase}${url}`);
 
-    if (!res.ok || Math.random() > 0.99) {
-      throw new Error(`Could not fetch ${url}, received ${res.status}`);
-    }
+    // if (!res.ok || Math.random() > 0.75) {
+    //   throw new Error(`Could not fetch ${url}, received ${res.status}`);
+    // }
     return await res.json();
   }
 
@@ -44,7 +44,7 @@ export default class PokemonService {
       weight: pokemon.weight,
       types: pokemon.types,
       abilities: pokemon.abilities,
-      stats: pokemon.stats,
+      stats: pokemon.stats
     };
   };
 }

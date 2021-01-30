@@ -64,44 +64,49 @@ class PokemonDetails extends Component {
     //   return <span>Select a pokemon from list</span>;
     // }
 
-    const {
-      id,
-      name,
-      experience,
-      height,
-      weight,
-      types,
-      abilities,
-    } = this.props.pokemon;
+    // const {
+    //   id,
+    //   name,
+    //   experience,
+    //   height,
+    //   weight,
+    //   types,
+    //   abilities,
+    // } = this.state.pokemon;
 
-    const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
+    // const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
 
-    return (
+    return this.state.pokemon ? (
       <div className="pokemon-details card">
         <img
           className="pokemon-image"
-          src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
-          alt={nameCapitalized}
+          src={`https://pokeres.bastionbot.org/images/pokemon/${this.state.pokemon.id}.png`}
+          alt={
+            this.state.pokemon.name.charAt(0).toUpperCase() + this.state.pokemon.name.slice(1)
+          }
         />
 
         <div className="card-body">
-          <h4>{nameCapitalized}</h4>
+          <h4>
+            {this.state.pokemon.name.charAt(0).toUpperCase() +
+              this.state.pokemon.name.slice(1)}
+          </h4>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <span className="term">Base Experience</span>
-              <span>{experience}</span>
+              <span>{this.state.pokemon.experience}</span>
             </li>
             <li className="list-group-item">
               <span className="term">Height</span>
-              <span>{height}</span>
+              <span>{this.state.pokemon.height}</span>
             </li>
             <li className="list-group-item">
               <span className="term">Weight</span>
-              <span>{weight}</span>
+              <span>{this.state.pokemon.weight}</span>
             </li>
             <li className="list-group-item">
               <span className="term">Types</span>
-              {types.map((it, index, array) => {
+              {this.state.pokemon.types.map((it, index, array) => {
                 return (
                   <span key={it.type.name}>
                     {index !== array.length - 1
@@ -113,7 +118,7 @@ class PokemonDetails extends Component {
             </li>
             <li className="list-group-item">
               <span className="term">Abilities</span>
-              {abilities.map((it, type, array) => {
+              {this.state.pokemon.abilities.map((it, type, array) => {
                 return (
                   <li className="list-group-item" key={it.ability.name}>
                     <span>{it.ability.name}</span>
@@ -124,6 +129,8 @@ class PokemonDetails extends Component {
           </ul>
         </div>
       </div>
+    ) : (
+      "Lodofkdfokdlfk"
     );
   }
 }
