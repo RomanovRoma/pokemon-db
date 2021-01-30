@@ -1,6 +1,6 @@
 export default class PokemonService {
   _apiBase = "https://pokeapi.co/api/v2";
-
+  debugger;
   async getResource(url) {
     const res = await fetch(`${this._apiBase}${url}`);
 
@@ -20,8 +20,8 @@ export default class PokemonService {
   //   return this._transformPokemon(pokemon);
   // }
 
-  async getPokemon(name) {
-    const pokemon = await this.getResource(`/pokemon/${name}/`);
+  async getPokemon(pokemonName) {
+    const pokemon = await this.getResource(`/pokemon/${pokemonName}/`);
     return this._transformPokemon(pokemon);
   }
 
@@ -44,7 +44,7 @@ export default class PokemonService {
       weight: pokemon.weight,
       types: pokemon.types,
       abilities: pokemon.abilities,
-      stats: pokemon.stats
+      stats: pokemon.stats,
     };
   };
 }

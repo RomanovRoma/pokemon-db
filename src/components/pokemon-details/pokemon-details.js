@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 // import { withPokemonService } from '../hoc'
-import { fetchPokemon } from '../../actions'
-import { compose } from '../../utils'
+// import { fetchPokemon } from '../../actions'
+// import { compose } from '../../utils'
 import PokemonService from "../../services/pokemon-service";
 
-import ErrorIndicator from '../error-indicator/error-indicator'
-import Spinner from '../spinner/spinner'
+// import ErrorIndicator from '../error-indicator/error-indicator'
+// import Spinner from '../spinner/spinner'
 import './pokemon-details.css'
 
 class PokemonDetails extends Component {
@@ -72,7 +72,8 @@ class PokemonDetails extends Component {
       weight,
       types,
       abilities,
-    } = this.props.pokemon.name;
+    } = this.props.pokemon;
+
     const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
 
     return (
