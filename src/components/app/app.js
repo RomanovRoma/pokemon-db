@@ -27,11 +27,14 @@ const App = () => {
         <Header />
         <div className="row mb2">
           <Switch>
-            <Route path="/" component={HomePage} exact />
-            <Route path="/:name" render={({match}) => {
-                                  const { name } = match.params
-                                  return <PokemonDetails pokemonName={name} />;
-                                }} />
+            <Route path="/pokemon-db/" component={HomePage} exact />
+            <Route
+              path="/:name"
+              render={({ match }) => {
+                const { name } = match.params;
+                return <PokemonDetails pokemonName={name} />;
+              }}
+            />
           </Switch>
         </div>
       </main>
