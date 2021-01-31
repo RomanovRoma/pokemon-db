@@ -1,4 +1,4 @@
-# Pokemon-db App (React, Redux, Bootstrap)
+# Pokemon DB App (React, Redux, Bootstrap)
 
 <a href="https://romanovroma.github.io/pokemon-db/" target="_blank">Check the Demo</a>
 
