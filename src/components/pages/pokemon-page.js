@@ -6,12 +6,15 @@ const PokemonPage = (props) => {
 
   return (
     <div className="col-md-6">
-        <PokemonDetails
-          pokemonName={props.pokemonName}
-          onAbilitySelected={(abilityName) => {
-            props.history.push(`/ability/${abilityName}`)
-          }}
-        />
+      <PokemonDetails
+        pokemonName={props.pokemonName}
+        onAbilitySelected={(abilityName) => {
+          props.history.push(`/ability/${abilityName}`);
+        }}
+        onTypeSelected={(typeName) => {
+          props.history.push(`/type/${typeName}`);
+        }}
+      />
     </div>
   );
 }

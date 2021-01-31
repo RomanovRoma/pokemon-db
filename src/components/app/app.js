@@ -3,11 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 import { HomePage, PokemonPage } from '../pages'
 
 import Header from '../header'
-// import PokemonList from '../pokemon-list'
-// import PokemonDetails from '../pokemon-details'
 import AbilityDetails from '../ability-details'
+import TypeDetails from "../type-details";
 
 import './app.css'
+
 
 const App = () => {
   return (
@@ -28,6 +28,13 @@ const App = () => {
             render={({ match }) => {
               const { ability } = match.params;
               return <AbilityDetails abilityName={ability} />;
+            }}
+          />
+          <Route
+            path="/type/:type"
+            render={({ match }) => {
+              const { type } = match.params;
+              return <TypeDetails abilityName={type} />;
             }}
           />
         </Switch>

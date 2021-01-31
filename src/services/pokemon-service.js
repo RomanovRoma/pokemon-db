@@ -1,5 +1,4 @@
 export default class PokemonService {
-
   _apiBase = "https://pokeapi.co/api/v2";
 
   async getResource(url) {
@@ -26,6 +25,20 @@ export default class PokemonService {
     const ability = await this.getResource(`/ability/${abilityName}/`);
     return this._transformAbility(ability);
   }
+
+  async getType(typeName) {
+    const type = await this.getResource(`/type/${typeName}/`);
+    return this._transformType(type);
+  }
+
+  _transformType = (type) => {
+    return {
+      id: type.id,
+      name: type.name,
+      class: type.move_damage_class,
+      generation: type.generation
+    };
+  };
 
   _transformAbility = (ability) => {
     return {

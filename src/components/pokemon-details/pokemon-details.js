@@ -39,16 +39,6 @@ class PokemonDetails extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.props.fetchPokemon();
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.pokemonId !== prevProps.pokemonId) {
-  //     this.updatePokemon();
-  //   }
-  // }
-
   render() {
     // const { pokemon, loading, error } = this.props;
 
@@ -107,15 +97,23 @@ class PokemonDetails extends Component {
             </li>
             <li className="list-group-item">
               <span className="term">Types</span>
-              {this.state.pokemon.types.map((it, index, array) => {
-                return (
-                  <span key={it.type.name}>
-                    {index !== array.length - 1
-                      ? `${it.type.name}, `
-                      : `${it.type.name}`}
-                  </span>
-                );
-              })}
+              <ul>
+                {this.state.pokemon.types.map((it, index, array) => {
+                  return (
+                    <li className="list-group-item" key={it.type.name}>
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() =>
+                          this.props.onTypeSelected(it.type.name)
+                        }
+                      >
+                          {it.type.name}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
             <li className="list-group-item">
               <span className="term">Abilities</span>
@@ -126,7 +124,9 @@ class PokemonDetails extends Component {
                       <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={() => this.props.onAbilitySelected(it.ability.name)}
+                        onClick={() =>
+                          this.props.onAbilitySelected(it.ability.name)
+                        }
                       >
                         {it.ability.name}
                       </button>
