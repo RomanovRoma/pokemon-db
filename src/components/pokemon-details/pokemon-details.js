@@ -78,10 +78,10 @@ class PokemonDetails extends Component {
         />
 
         <div className="card-body">
-          <h4>
+          <h3>
             {this.state.pokemon.name.charAt(0).toUpperCase() +
               this.state.pokemon.name.slice(1)}
-          </h4>
+          </h3>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <span className="term">Base Experience</span>
@@ -104,9 +104,7 @@ class PokemonDetails extends Component {
                       <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={() =>
-                          this.props.onTypeSelected(it.type.name)
-                        }
+                        onClick={() => this.props.onTypeSelected(it.type.name)}
                       >
                           {it.type.name}
                       </button>
@@ -124,9 +122,7 @@ class PokemonDetails extends Component {
                       <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={() =>
-                          this.props.onAbilitySelected(it.ability.name)
-                        }
+                        onClick={() => this.props.onAbilitySelected(it.ability.name)}
                       >
                         {it.ability.name}
                       </button>

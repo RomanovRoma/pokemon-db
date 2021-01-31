@@ -5,7 +5,7 @@ export default class PokemonService {
     // debugger
     const res = await fetch(`${this._apiBase}${url}`);
 
-    // if (!res.ok || Math.random() > 0.85) {
+    // if (!res.ok || Math.random() > 0.75) {
     //   throw new Error(`Could not fetch ${url}, received ${res.status}`);
     // }
     return await res.json();
@@ -36,7 +36,8 @@ export default class PokemonService {
       id: type.id,
       name: type.name,
       class: type.move_damage_class,
-      generation: type.generation
+      generation: type.generation,
+      pokemon: type.pokemon,
     };
   };
 

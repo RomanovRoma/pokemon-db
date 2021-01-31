@@ -34,7 +34,7 @@ const App = () => {
             path="/type/:type"
             render={({ match }) => {
               const { type } = match.params;
-              return <TypeDetails abilityName={type} />;
+              return <TypeDetails typeName={type} />;
             }}
           />
         </Switch>

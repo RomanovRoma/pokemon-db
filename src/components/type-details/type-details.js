@@ -40,6 +40,20 @@ class TypeDetails extends Component {
           {this.state.type.name.charAt(0).toUpperCase() +
             this.state.type.name.slice(1)}
         </h2>
+      <ul className="list-group list-group-flush">
+       <li className="list-group-item">
+         {this.state.type.pokemon.map((it, type, array) => {
+          return (
+            <li className="list-group-item" key={it.pokemon.name}>
+              <span>
+                {it.pokemon.name.charAt(0).toUpperCase() +
+                  it.pokemon.name.slice(1)}
+              </span>
+            </li>
+          );
+        })}
+      </li>
+    </ul>
       </div>
     ) : (
       <Spinner />
