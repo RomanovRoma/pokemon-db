@@ -7,7 +7,7 @@ const HomePage = ({history}) => {
     <div className="col-md-6">
       <PokemonList
         onPokemonSelected={(pokemonName) => {
-          history.push(`/${pokemonName}`);
+          history.push(`/pokemon/${pokemonName}`);
         }} />
     </div>
   );

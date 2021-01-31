@@ -4,6 +4,7 @@ import Spinner from "../spinner/spinner";
 import "./ability-details.css";
 
 class AbilityDetails extends Component {
+  debugger;
   pokemonService = new PokemonService();
 
   state = {
@@ -15,7 +16,7 @@ class AbilityDetails extends Component {
     if (!abilityName) {
       return;
     }
-    
+
     this.pokemonService.getAbility(abilityName).then((ability) => {
       this.setState({
         ability,
@@ -24,7 +25,7 @@ class AbilityDetails extends Component {
   }
 
   componentDidMount() {
-    this.updatePokemon();
+    this.updateAbility();
   }
 
   componentDidUpdate(prevProps) {
@@ -34,21 +35,21 @@ class AbilityDetails extends Component {
   }
 
   render() {
-
     return this.state.ability ? (
       <div className="pokemon-details card">
-         <h4>
-             {this.state.ability.name.charAt(0).toUpperCase() +
-              this.state.ability.name.slice(1)}
-          </h4>
+        <h4>
+          {this.state.ability.name.charAt(0).toUpperCase() +
+            this.state.ability.name.slice(1)}
+        </h4>
       </div>
     ) : (
-    <Spinner />
-    )
+      <Spinner />
+    );
   }
 }
 
 export default AbilityDetails
+
 {/* <div className="pokemon-details card"> */}
   //        <img
   //         className="pokemon-image"
