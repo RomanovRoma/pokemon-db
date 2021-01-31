@@ -17,11 +17,6 @@ export default class PokemonService {
     return res.results.map(this._transformPokemons);
   }
 
-  // async getPokemon(id) {
-  //   const pokemon = await this.getResource(`/pokemon/${id}/`);
-  //   return this._transformPokemon(pokemon);
-  // }
-
   async getPokemon(pokemonName) {
     const pokemon = await this.getResource(`/pokemon/${pokemonName}/`);
     return this._transformPokemon(pokemon);

@@ -37,10 +37,22 @@ class AbilityDetails extends Component {
   render() {
     return this.state.ability ? (
       <div className="pokemon-details card">
-        <h4>
+        <h2>
           {this.state.ability.name.charAt(0).toUpperCase() +
             this.state.ability.name.slice(1)}
-        </h4>
+        </h2>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">
+            {this.state.ability.effect.map((it, type, array) => {
+              return (
+                <li className="list-group-item" key={it.effect}>
+                  <h3>Language {it.language.name}:</h3>
+                  <span>{it.effect}</span>
+                </li>
+              );
+            })}
+          </li>
+        </ul>
       </div>
     ) : (
       <Spinner />

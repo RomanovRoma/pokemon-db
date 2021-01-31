@@ -126,9 +126,7 @@ class PokemonDetails extends Component {
                       <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={() =>
-                          this.props.onAbilitySelected(it.ability.name)
-                        }
+                        onClick={() => this.props.onAbilitySelected(it.ability.name)}
                       >
                         {it.ability.name}
                       </button>
@@ -145,18 +143,4 @@ class PokemonDetails extends Component {
     );
   }
 }
-
-// const mapStateToProps = ({ pokemonDetails: { pokemon, loading, error } }) => {
-//   return { pokemon, loading, error };
-// };
-
-// const mapDispatchToProps = (dispatch, { pokemonService }) => {
-//   return {
-//     fetchPokemon: fetchPokemon(pokemonService, dispatch),
-//   };
-// };
-// export default compose(
-//   withPokemonService(),
-//   connect(mapStateToProps, mapDispatchToProps)
-// )(PokemonDetails);
 export default PokemonDetails
