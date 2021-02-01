@@ -40,32 +40,7 @@ class PokemonDetails extends Component {
   }
 
   render() {
-    // const { pokemon, loading, error } = this.props;
-
-    // if (loading) {
-    //   return <Spinner />;
-    // }
-
-    // if (error) {
-    //   return <ErrorIndicator />;
-    // }
-
-    // if (!pokemon) {
-    //   return <span>Select a pokemon from list</span>;
-    // }
-
-    // const {
-    //   id,
-    //   name,
-    //   experience,
-    //   height,
-    //   weight,
-    //   types,
-    //   abilities,
-    // } = this.state.pokemon;
-
-    // const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
-
+    
     return this.state.pokemon ? (
       <div className="pokemon-details card">
         <img
