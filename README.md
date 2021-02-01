@@ -6,6 +6,7 @@
 - Routing
 - Redux
 - Bootstrap
+- CSS modules
 
 ⚙️ **To Run Locally**:
 
