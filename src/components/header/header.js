@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PokemonSearchPage from '../pages/pokemon-search-page'
 import './header.css'
 
 const Header = () => {
@@ -10,6 +11,9 @@ const Header = () => {
           Pokemon DB
         </div>
       </Link>
+      <div>
+        <PokemonSearchPage />
+      </div>
     </div>
   );
 }
