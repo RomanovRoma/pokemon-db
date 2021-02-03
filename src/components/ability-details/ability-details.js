@@ -37,15 +37,18 @@ class AbilityDetails extends Component {
     return this.state.ability ? (
       <div className="pokemon-details card">
         <h2>
-          {this.state.ability.name.charAt(0).toUpperCase() +
-            this.state.ability.name.slice(1)}
+          <span>Description of ability:</span>
+          <div>
+            {this.state.ability.name.charAt(0).toUpperCase() +
+              this.state.ability.name.slice(1)}
+          </div>
         </h2>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             {this.state.ability.effect.map((it, type, array) => {
               return (
                 <li className="list-group-item" key={it.effect}>
-                  <h3>Language {it.language.name}:</h3>
+                  <h3>Language ({it.language.name}):</h3>
                   <span>{it.effect}</span>
                 </li>
               );
