@@ -25,19 +25,27 @@ const Main = (props) => {
   return (
     <div>
       <div>
-        <input
-          id="input-field"
-          type="text"
-          pokemon={value}
-          onChange={onChange}
-        />
-        <button
-          id="search-button"
-          type="button"
-          onClick={() => props.onPokemonSelected(value)}
-        >
-          Search
-        </button>
+        <div>
+          <label class="col-form-label" for="input-field">
+            Pokemon's name
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="pokemon's name"
+            id="input-field"
+            pokemon={value}
+            onChange={onChange}
+          />
+          <button
+            id="search-button"
+            type="button"
+            class="btn btn-primary"
+            onClick={() => props.onPokemonSelected(value)}
+          >
+            Search
+          </button>
+        </div>
       </div>
     </div>
   );

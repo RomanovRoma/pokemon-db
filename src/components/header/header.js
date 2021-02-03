@@ -11,9 +11,7 @@ const Header = () => {
           Pokemon DB
         </div>
       </Link>
-      <div>
-        <PokemonSearchPage />
-      </div>
+      <PokemonSearchPage />
     </div>
   );
 }
