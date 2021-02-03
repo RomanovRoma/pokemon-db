@@ -7,7 +7,7 @@ const Main = (props) => {
   const history = useHistory();
 
   const onChange = (event) => {
-    setValue(event.target.value);
+    setValue(event.target.value.toLowerCase());
   };
 
   useEffect(() => {
