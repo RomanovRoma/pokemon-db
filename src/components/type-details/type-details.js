@@ -45,10 +45,14 @@ class TypeDetails extends Component {
          {this.state.type.pokemon.map((it, type, array) => {
           return (
             <li className="list-group-item" key={it.pokemon.name}>
-              <span>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => this.props.onPokemonSelected(it.pokemon.name)}
+              >
                 {it.pokemon.name.charAt(0).toUpperCase() +
                   it.pokemon.name.slice(1)}
-              </span>
+              </button>
             </li>
           );
         })}
