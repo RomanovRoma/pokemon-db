@@ -37,10 +37,8 @@ class TypeDetails extends Component {
     return this.state.type ? (
       <div className="pokemon-details card">
         <h2>
-          <span>
-            Type of pokemon:
-          </span>
-          <br/>
+          <span>Type of pokemon:</span>
+          <br />
           <span>
             {this.state.type.name.charAt(0).toUpperCase() +
               this.state.type.name.slice(1)}
@@ -48,22 +46,24 @@ class TypeDetails extends Component {
         </h2>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            {this.state.type.pokemon.map((it, type, array) => {
-              return (
-                <li className="list-group-item" key={it.pokemon.name}>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() =>
-                      this.props.onPokemonSelected(it.pokemon.name)
-                    }
-                  >
-                    {it.pokemon.name.charAt(0).toUpperCase() +
-                      it.pokemon.name.slice(1)}
-                  </button>
-                </li>
-              );
-            })}
+            <ul>
+              {this.state.type.pokemon.map((it, type, array) => {
+                return (
+                  <li className="list-group-item" key={it.pokemon.name}>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() =>
+                        this.props.onPokemonSelected(it.pokemon.name)
+                      }
+                    >
+                      {it.pokemon.name.charAt(0).toUpperCase() +
+                        it.pokemon.name.slice(1)}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </li>
         </ul>
       </div>

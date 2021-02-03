@@ -45,14 +45,16 @@ class AbilityDetails extends Component {
         </h2>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            {this.state.ability.effect.map((it, type, array) => {
-              return (
-                <li className="list-group-item" key={it.effect}>
-                  <h3>Language ({it.language.name}):</h3>
-                  <span>{it.effect}</span>
-                </li>
-              );
-            })}
+            <ul>
+              {this.state.ability.effect.map((it, type, array) => {
+                return (
+                  <li className="list-group-item" key={it.effect}>
+                    <h3>Language ({it.language.name}):</h3>
+                    <span>{it.effect}</span>
+                  </li>
+                );
+              })}
+            </ul>
           </li>
         </ul>
       </div>

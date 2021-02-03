@@ -26,21 +26,20 @@ const Main = (props) => {
     <div>
       <div>
         <div>
-          <label class="col-form-label" for="input-field">
+          <label className="col-form-label">
             Pokemon's name
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="pokemon's name"
-            id="input-field"
             pokemon={value}
             onChange={onChange}
           />
           <button
             id="search-button"
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             onClick={() => props.onPokemonSelected(value)}
           >
             Search
