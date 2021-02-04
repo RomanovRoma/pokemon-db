@@ -2,6 +2,8 @@
 
 <a href="https://romanovroma.github.io/pokemon-db/" target="_blank">Check the Demo</a>
 
+<img src="./src/assets/screenshot.png" alt="screenshot" />
+
 - React v17 (CRA)
 - Routing
 - Redux
