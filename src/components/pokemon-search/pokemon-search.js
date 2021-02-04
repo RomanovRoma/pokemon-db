@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const Main = (props) => {
+const PokemonSearch = (props) => {
   const [value, setValue] = useState("");
   const history = useHistory();
 
@@ -50,6 +50,4 @@ const Main = (props) => {
   );
 };
 
-Main.propTypes = {};
-
-export default Main;
+export default PokemonSearch;
