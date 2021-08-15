@@ -13,7 +13,15 @@ class PokemonDetails extends Component {
   pokemonService = new PokemonService();
 
   state = {
-    pokemon: null,
+    pokemon: {
+      id: '',
+      name: '',
+      experience: '',
+      height: '',
+      weight: '',
+      types: [],
+      abilities: [],
+    },
   };
 
   updatePokemon() {
@@ -40,40 +48,52 @@ class PokemonDetails extends Component {
   }
 
   render() {
-    
+
+    const {id, name, experience, height, weight, types, abilities} = this.state.pokemon;
+
+    const numToStr = String(id);
+    let newId;
+    if (numToStr.length === 1) {
+      newId = "00" + numToStr;
+    } else if (numToStr.length === 2) {
+      newId = "0" + numToStr;
+    } else {
+      newId = numToStr;
+    }
+
     return this.state.pokemon ? (
       <div className="pokemon-details card">
         <img
           className="pokemon-image"
-          src={`https://pokeres.bastionbot.org/images/pokemon/${this.state.pokemon.id}.png`}
+          src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${newId}.png`}
           alt={
-            this.state.pokemon.name.charAt(0).toUpperCase() +
-            this.state.pokemon.name.slice(1)
+            name.charAt(0).toUpperCase() +
+            name.slice(1)
           }
         />
 
         <div className="card-body">
           <h3>
-            {this.state.pokemon.name.charAt(0).toUpperCase() +
-              this.state.pokemon.name.slice(1)}
+            {name.charAt(0).toUpperCase() +
+              name.slice(1)}
           </h3>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <span className="term">Base Experience</span>
-              <span>{this.state.pokemon.experience}</span>
+              <span>{experience}</span>
             </li>
             <li className="list-group-item">
               <span className="term">Height</span>
-              <span>{this.state.pokemon.height}</span>
+              <span>{height}</span>
             </li>
             <li className="list-group-item">
               <span className="term">Weight</span>
-              <span>{this.state.pokemon.weight}</span>
+              <span>{weight}</span>
             </li>
             <li className="list-group-item">
               <span className="term">Types</span>
               <ul>
-                {this.state.pokemon.types.map((it, index, array) => {
+                {types.map((it, index, array) => {
                   return (
                     <li className="list-group-item" key={it.type.name}>
                       <button
@@ -81,7 +101,7 @@ class PokemonDetails extends Component {
                         className="btn btn-primary"
                         onClick={() => this.props.onTypeSelected(it.type.name)}
                       >
-                          {it.type.name}
+                        {it.type.name}
                       </button>
                     </li>
                   );
@@ -91,13 +111,15 @@ class PokemonDetails extends Component {
             <li className="list-group-item">
               <span className="term">Abilities</span>
               <ul>
-                {this.state.pokemon.abilities.map((it, type, array) => {
+                {abilities.map((it, type, array) => {
                   return (
                     <li className="list-group-item" key={it.ability.name}>
                       <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={() => this.props.onAbilitySelected(it.ability.name)}
+                        onClick={() =>
+                          this.props.onAbilitySelected(it.ability.name)
+                        }
                       >
                         {it.ability.name}
                       </button>
